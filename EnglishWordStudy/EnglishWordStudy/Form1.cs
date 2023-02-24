@@ -9,6 +9,7 @@ namespace EnglishWordStudy
         {
             InitializeComponent();
             wordDictionary = new WordDictionary();
+            wordDictionary.ReadMainDictionary();
         }
 
 
