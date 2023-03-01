@@ -1,2 +1,4 @@
 Dog Собака
 Cat Кошка
+Crocodile Крокодил
+Layout Макет

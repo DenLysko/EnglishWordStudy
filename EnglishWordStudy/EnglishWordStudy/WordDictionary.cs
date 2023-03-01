@@ -17,10 +17,11 @@ namespace EnglishWordStudy
         public void ReadMainDictionary()
         {
             // Берём непосредственно сам txt-шный файл
-            var mainDictionaryAsFileInfo = new FileInfo(new DirectoryInfo(".").Parent.Parent.Parent.Parent.Parent.FullName + "/MainDictionary.txt");
-            var b = new StreamReader(mainDictionaryAsFileInfo.FullName);
-            var c = b.ReadToEnd();
-            FillDictionary(c.Split('\n'));
+            var mainDictionaryAsFileInfo = new FileInfo(new DirectoryInfo(".").Parent?.Parent?.Parent?.Parent?.Parent?.FullName + "/MainDictionary.txt");
+            var streamReaderForMainDictionary = new StreamReader(mainDictionaryAsFileInfo.FullName);
+            var allTextFromMainDictionary = streamReaderForMainDictionary.ReadToEnd();
+            FillDictionary(allTextFromMainDictionary.Split('\n', ' '));
+
             //string[] wordsAndTheirTranslations = c.Split('\n');
             //var d = wordsAndTheirTranslations.Length;
 
@@ -36,11 +37,11 @@ namespace EnglishWordStudy
             
         }
 
-        public void FillDictionary(string[] wordsAndTheirTranslations)
+        public void FillDictionary(string[] wordAndItsTranslation)
         {
-            for (int i = 0; i < wordsAndTheirTranslations.Length; i = i + 2)
+            for (int i = 0; i < wordAndItsTranslation.Length; i = i + 2)
             {
-                dic[wordsAndTheirTranslations[i]] = wordsAndTheirTranslations[i + 1];
+                dic[wordAndItsTranslation[i]] = wordAndItsTranslation[i + 1];
             }
         }
     }

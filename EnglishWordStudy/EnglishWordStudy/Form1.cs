@@ -3,55 +3,36 @@ namespace EnglishWordStudy
     public partial class EnglishWordStudy : Form
     {
         internal WordDictionary wordDictionary;
-
+        static string? anotherEnglishWord;
 
         public EnglishWordStudy()
         {
             InitializeComponent();
             wordDictionary = new WordDictionary();
             wordDictionary.ReadMainDictionary();
+            CheckAnotherWord();
         }
 
-
-        private void ProposedTranslation_TextChanged(object sender, EventArgs e)
+        private void CheckAnotherWord()
         {
+            WriteAnotherWord();
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        public void WriteAnotherWord()
         {
-            //PanelWithEnglishWord.
+            var russianWord = wordDictionary.dic["Dog"];
+            anotherEnglishWord = "Dog";
+            labelForEnglishWord.Text = russianWord;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void PanelWithEnglishWord_DoubleClick(object sender, EventArgs e)
         {
             PanelWithEnglishWord.Visible = false;
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
-
-        private void TextBoxForAnswer_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBoxForAnswer_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
 
         private void EnglishWordStudy_KeyUp(object sender, KeyEventArgs e)
         {
@@ -118,7 +99,15 @@ namespace EnglishWordStudy
                 var b = a.ReadToEnd();
                 string[] strings = b.Split(' ');
                 wordDictionary.FillDictionary(strings);
-            } 
+            }
+        }
+
+        private void CheckButton_Click(object sender, EventArgs e)
+        {
+            if (TextBoxForAnswer.Text == anotherEnglishWord)
+                CheckButton.Text = "Congratulation!";
+            else
+                CheckButton.Text = "Wrong!";
         }
     }
 }
