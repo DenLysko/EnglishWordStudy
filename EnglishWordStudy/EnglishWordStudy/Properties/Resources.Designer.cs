@@ -63,9 +63,9 @@ namespace EnglishWordStudy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _123 {
+        internal static System.Drawing.Bitmap Bas_DinNorris {
             get {
-                object obj = ResourceManager.GetObject("123", resourceCulture);
+                object obj = ResourceManager.GetObject("Bas_DinNorris", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace EnglishWordStudy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _3211 {
+        internal static System.Drawing.Bitmap Good_DinNorris {
             get {
-                object obj = ResourceManager.GetObject("3211", resourceCulture);
+                object obj = ResourceManager.GetObject("Good_DinNorris", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
