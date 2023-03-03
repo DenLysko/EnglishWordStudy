@@ -4,27 +4,32 @@ namespace EnglishWordStudy
     {
         internal WordDictionary wordDictionary;
         static string? anotherEnglishWord;
+        static Random randomForDictionary;
+        static Random randomForTranslations;
 
         public EnglishWordStudy()
         {
             InitializeComponent();
             wordDictionary = new WordDictionary();
             wordDictionary.ReadMainDictionary();
-            CheckAnotherWord();
+            randomForDictionary = new Random(42);
+            randomForTranslations = new Random(24);
+            CheckCurrentWord();
         }
 
-        private void CheckAnotherWord()
+        private void CheckCurrentWord()
         {
             WriteAnotherWord();
         }
 
         public void WriteAnotherWord()
         {
-            var myRandom = new Random();
-            var russianTranslations = wordDictionary.Elements[0].GetRussianTranslations();
-            anotherEnglishWord = wordDictionary.Elements[0].GetEnglishElement();
-            labelForEnglishWord.Text = russianTranslations[1];
-        }
+            int newIntForDictionary = randomForDictionary.Next((wordDictionary.Elements.Count));
+            var russianTranslations = wordDictionary.Elements[newIntForDictionary].GetRussianTranslations();
+            anotherEnglishWord = wordDictionary.Elements[newIntForDictionary].GetEnglishElement();
+            int newIntForTranslations = randomForDictionary.Next((wordDictionary.Elements[newIntForDictionary].GetRussianTranslations().Count));
+            labelForEnglishWord.Text = russianTranslations[newIntForTranslations];
+        }   
 
 
         private void TextBoxForAnswer_KeyUp(object sender, KeyEventArgs e)
@@ -74,6 +79,8 @@ namespace EnglishWordStudy
         {
             var result = new Result(resultThatNeedToDraw);
             result.ShowDialog(this);
+            TextBoxForAnswer.Text = string.Empty;
+            WriteAnotherWord();
         }
 
         private void SaveProgress_Click(object sender, EventArgs e)
@@ -81,5 +88,9 @@ namespace EnglishWordStudy
             // To Do: change MainDictionary.txt
         }
 
+        private void CreateNextWord()
+        {
+
+        }
     }
 }
