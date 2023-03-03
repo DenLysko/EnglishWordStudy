@@ -34,10 +34,10 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources._123;
+            pictureBox1.Image = Properties.Resources.Bas_DinNorris;
             pictureBox1.Location = new Point(-2, -1);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(349, 439);
+            pictureBox1.Size = new Size(500, 620);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -45,7 +45,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(339, 434);
+            ClientSize = new Size(494, 611);
             Controls.Add(pictureBox1);
             Name = "Result";
             StartPosition = FormStartPosition.CenterParent;

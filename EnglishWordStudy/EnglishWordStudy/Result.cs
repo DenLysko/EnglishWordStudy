@@ -22,9 +22,9 @@ namespace EnglishWordStudy
         private void Result_Load(object sender, EventArgs e)
         {
             if (_resultFromMainForm)
-                pictureBox1.Image = Properties.Resources._123;
+                pictureBox1.Image = Properties.Resources.Good_DinNorris;
             else
-                pictureBox1.Image = Properties.Resources._3211;
+                pictureBox1.Image = Properties.Resources.Bas_DinNorris;
         }
 
         private void Result_KeyUp(object sender, KeyEventArgs e)

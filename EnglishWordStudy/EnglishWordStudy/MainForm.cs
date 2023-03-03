@@ -20,9 +20,10 @@ namespace EnglishWordStudy
 
         public void WriteAnotherWord()
         {
-            var russianWord = wordDictionary.dic["Dog"];
-            anotherEnglishWord = "Dog";
-            labelForEnglishWord.Text = russianWord;
+            var myRandom = new Random();
+            var russianTranslations = wordDictionary.Elements[0].GetRussianTranslations();
+            anotherEnglishWord = wordDictionary.Elements[0].GetEnglishElement();
+            labelForEnglishWord.Text = russianTranslations[1];
         }
 
 
@@ -74,5 +75,11 @@ namespace EnglishWordStudy
             var result = new Result(resultThatNeedToDraw);
             result.ShowDialog(this);
         }
+
+        private void SaveProgress_Click(object sender, EventArgs e)
+        {
+            // To Do: change MainDictionary.txt
+        }
+
     }
 }

@@ -10,7 +10,19 @@ namespace EnglishWordStudy
 {
     internal class WordDictionary
     {
-        public Dictionary<string, string> dic = new Dictionary<string, string>();
+        ///// <summary>
+        ///// EnglishWord and its translations in Russian
+        ///// </summary>
+        //public Dictionary<string, List<string>> dicEnRu = new ();
+
+        public List<DictionaryElement> Elements;
+
+        public WordDictionary()
+        {
+            Elements = new List<DictionaryElement>();
+        }
+
+        public List<string> rightRussianAnswers = new ();
 
         public double completionPercent = 0;
 
@@ -20,29 +32,41 @@ namespace EnglishWordStudy
             var mainDictionaryAsFileInfo = new FileInfo(new DirectoryInfo(".").Parent?.Parent?.Parent?.Parent?.Parent?.FullName + "/MainDictionary.txt");
             var streamReaderForMainDictionary = new StreamReader(mainDictionaryAsFileInfo.FullName);
             var allTextFromMainDictionary = streamReaderForMainDictionary.ReadToEnd();
-            FillDictionary(allTextFromMainDictionary.Split('\n', ' '));
-
-            //string[] wordsAndTheirTranslations = c.Split('\n');
-            //var d = wordsAndTheirTranslations.Length;
-
-
-
-
-            //string s = mainDictionaryAsTXT
-
-            //var directoryInfo = new DirectoryInfo(".");
-            //var a = directoryInfo.FullName;
-            //var directoryInfo1 = new DirectoryInfo(directoryInfo.Parent.Parent.Parent.Parent.Parent.FullName);
-            //var file = new FileInfo(directoryInfo1 + "/MainDictionary.txt");
-            
+            //var standartStringsFromMainDictionary = allTextFromMainDictionary.Split('\n');
+            FillDictionary(allTextFromMainDictionary.Split('\n'));            
         }
 
-        public void FillDictionary(string[] wordAndItsTranslation)
+        public void FillDictionary(string[] standartStringsFromMainDictionary)
         {
-            for (int i = 0; i < wordAndItsTranslation.Length; i = i + 2)
+            foreach (string standartString in standartStringsFromMainDictionary)
             {
-                dic[wordAndItsTranslation[i]] = wordAndItsTranslation[i + 1];
+                if (string.IsNullOrEmpty(standartString)) 
+                    continue;
+                
+                var splittedStandartString = standartString.Split('-');
+                var secondPartOfStandartString = splittedStandartString[1].Trim(' ');
+                var splittedSecondPartOfStandartString = secondPartOfStandartString.Split(',').ToList();
+                int correctAnswerCounter;
+                try
+                {
+                    // Если получится парсить, то удаляем последний элемент
+                    correctAnswerCounter = int.Parse(splittedSecondPartOfStandartString.Last());
+                    splittedSecondPartOfStandartString.RemoveAt(splittedSecondPartOfStandartString.Count - 1);
+                }
+                catch 
+                {
+                    correctAnswerCounter = 0;
+                }
+                Elements.Add(new DictionaryElement(splittedStandartString[0].Trim(' '), splittedSecondPartOfStandartString, correctAnswerCounter));
+
+                //var correctAnswerCounter = int.TryParse(splittedSecondPartOfStandartString.Last(), int 0);
+                
             }
+            //standartStringsFromMainDictionary.Split('\n');
+            //for (int i = 0; i < standartStringsFromMainDictionary.Length; i = i + 2)
+            //{
+            //    dicEnRu[standartStringsFromMainDictionary[i]].Add(standartStringsFromMainDictionary[i + 1]);
+            //}
         }
     }
 }

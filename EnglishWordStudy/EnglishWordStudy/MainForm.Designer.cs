@@ -40,6 +40,7 @@
             label1 = new Label();
             labelForEnglishWord = new Label();
             openFileDialog1 = new OpenFileDialog();
+            SaveProgress = new Button();
             menuStrip1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -52,7 +53,7 @@
             TextBoxForAnswer.Name = "TextBoxForAnswer";
             TextBoxForAnswer.Size = new Size(554, 202);
             TextBoxForAnswer.TabIndex = 11;
-            TextBoxForAnswer.Text = "Type your answer";
+            TextBoxForAnswer.Text = "";
             TextBoxForAnswer.KeyUp += TextBoxForAnswer_KeyUp;
             // 
             // asdfToolStripMenuItem
@@ -147,11 +148,22 @@
             openFileDialog1.FileName = "openFileDialog1";
             openFileDialog1.FileOk += openFileDialog1_FileOk;
             // 
+            // SaveProgress
+            // 
+            SaveProgress.Location = new Point(442, 448);
+            SaveProgress.Name = "SaveProgress";
+            SaveProgress.Size = new Size(112, 23);
+            SaveProgress.TabIndex = 16;
+            SaveProgress.Text = "Save progress";
+            SaveProgress.UseVisualStyleBackColor = true;
+            SaveProgress.Click += SaveProgress_Click;
+            // 
             // EnglishWordStudy
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(565, 554);
+            ClientSize = new Size(565, 483);
+            Controls.Add(SaveProgress);
             Controls.Add(panel2);
             Controls.Add(CheckButton);
             Controls.Add(TextBoxForAnswer);
@@ -160,7 +172,7 @@
             Margin = new Padding(2);
             Name = "EnglishWordStudy";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "EnglishWordStudy";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -183,5 +195,6 @@
         private ToolStripMenuItem addVocabularyToolStripMenuItem;
         private Label label1;
         private OpenFileDialog openFileDialog1;
+        private Button SaveProgress;
     }
 }
